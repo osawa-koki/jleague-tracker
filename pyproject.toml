@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "jleague-tracker"
+version = "0.1.0"
+description = "🐴🐴🐴 Jリーグの試合結果を追跡するアプリケーションです！"
+authors = ["osawa-koki <koki@osawa.dev>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
