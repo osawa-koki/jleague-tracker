@@ -1,24 +1,112 @@
 [
-  "モンテディオ山形",
-  "水戸ホーリーホック",
-  "栃木ＳＣ",
-  "大宮アルディージャ",
-  "ジェフユナイテッド千葉",
-  "東京ヴェルディ",
-  "ＦＣ町田ゼルビア",
-  "横浜ＦＣ",
-  "ヴァンフォーレ甲府",
-  "松本山雅ＦＣ",
-  "アルビレックス新潟",
-  "ツエーゲン金沢",
-  "ＦＣ岐阜",
-  "京都サンガF.C.",
-  "ファジアーノ岡山",
-  "レノファ山口ＦＣ",
-  "カマタマーレ讃岐",
-  "徳島ヴォルティス",
-  "愛媛FC",
-  "アビスパ福岡",
-  "ロアッソ熊本",
-  "大分トリニータ"
+  {
+    "long_name": "モンテディオ山形",
+    "short_name": "山形",
+    "english_name": "yamagata"
+  },
+  {
+    "long_name": "水戸ホーリーホック",
+    "short_name": "水戸",
+    "english_name": "mito"
+  },
+  {
+    "long_name": "栃木ＳＣ",
+    "short_name": "栃木",
+    "english_name": "tochigi"
+  },
+  {
+    "long_name": "大宮アルディージャ",
+    "short_name": "大宮",
+    "english_name": "omiya"
+  },
+  {
+    "long_name": "ジェフユナイテッド千葉",
+    "short_name": "千葉",
+    "english_name": "chiba"
+  },
+  {
+    "long_name": "東京ヴェルディ",
+    "short_name": "東京Ｖ",
+    "english_name": "tokyov"
+  },
+  {
+    "long_name": "ＦＣ町田ゼルビア",
+    "short_name": "町田",
+    "english_name": "machida"
+  },
+  {
+    "long_name": "横浜ＦＣ",
+    "short_name": "横浜FC",
+    "english_name": "yokohamafc"
+  },
+  {
+    "long_name": "ヴァンフォーレ甲府",
+    "short_name": "甲府",
+    "english_name": "kofu"
+  },
+  {
+    "long_name": "松本山雅ＦＣ",
+    "short_name": "松本",
+    "english_name": "matsumoto"
+  },
+  {
+    "long_name": "アルビレックス新潟",
+    "short_name": "新潟",
+    "english_name": "niigata"
+  },
+  {
+    "long_name": "ツエーゲン金沢",
+    "short_name": "金沢",
+    "english_name": "kanazawa"
+  },
+  {
+    "long_name": "ＦＣ岐阜",
+    "short_name": "岐阜",
+    "english_name": "gifu"
+  },
+  {
+    "long_name": "京都サンガF.C.",
+    "short_name": "京都",
+    "english_name": "kyoto"
+  },
+  {
+    "long_name": "ファジアーノ岡山",
+    "short_name": "岡山",
+    "english_name": "okayama"
+  },
+  {
+    "long_name": "レノファ山口ＦＣ",
+    "short_name": "山口",
+    "english_name": "yamaguchi"
+  },
+  {
+    "long_name": "カマタマーレ讃岐",
+    "short_name": "讃岐",
+    "english_name": "sanuki"
+  },
+  {
+    "long_name": "徳島ヴォルティス",
+    "short_name": "徳島",
+    "english_name": "tokushima"
+  },
+  {
+    "long_name": "愛媛FC",
+    "short_name": "愛媛",
+    "english_name": "ehime"
+  },
+  {
+    "long_name": "アビスパ福岡",
+    "short_name": "福岡",
+    "english_name": "fukuoka"
+  },
+  {
+    "long_name": "ロアッソ熊本",
+    "short_name": "熊本",
+    "english_name": "kumamoto"
+  },
+  {
+    "long_name": "大分トリニータ",
+    "short_name": "大分",
+    "english_name": "oita"
+  }
 ]
