@@ -2,8 +2,11 @@ name: ci
 
 on: [ push ]
 
+env:
+  CI: 'true'
+
 jobs:
-  ci:
+  server-ci:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
@@ -28,3 +31,41 @@ jobs:
       run: poetry run python -m isort --check ./py-app/
     - name: mypy type checking
       run: poetry run python -m mypy ./py-app/
+  client-ci:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        node-version: [20.x, 22.x]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node_modules
+        id: node_modules_cache_id
+        uses: actions/cache@v4
+        with:
+          path: ./node_modules/
+          key: node-modules-${{ matrix.node-version }}-${{ hashFiles('./**/yarn.lock') }}
+      - name: Install dependencies
+        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile --non-interactive
+      - name: Type check
+        run: yarn type-check
+      - name: Linter check
+        run: yarn lint
+      - name: Install Playwright Browsers
+        run: yarn playwright install --with-deps
+      - name: Run tests
+        run: yarn test
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ matrix.node-version }}
+          path: ./playwright-report/
+          retention-days: 30
+      - name: test build
+        run: yarn build
