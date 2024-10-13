@@ -1,11 +1,10 @@
-import json
 from typing import Literal
 
 import requests
 
-from team_name import TeamName
-from team_status import TeamStatus
-from find_matches import find_matches
+from .find_matches import find_matches
+from .team_name import TeamName
+from .team_status import TeamStatus
 
 
 def search_matches(
@@ -33,11 +32,20 @@ def search_matches(
             away_score = match["away_score"]
 
             home_team_status = next(
-                (ts for ts in team_statuses if ts.team_name["short_name"] == home_team["short_name"]),
+                (
+                    ts
+                    for ts in team_statuses
+                    if ts.team_name["short_name"] == home_team["short_name"]
+                ),
                 None,
             )
             away_team_status = next(
-                (ts for ts in team_statuses if ts.team_name["short_name"] == away_team["short_name"]), None
+                (
+                    ts
+                    for ts in team_statuses
+                    if ts.team_name["short_name"] == away_team["short_name"]
+                ),
+                None,
             )
             if home_team_status is None:
                 raise ValueError("Home team status not found")

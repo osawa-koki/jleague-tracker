@@ -2,8 +2,8 @@ from typing import TypedDict
 
 from bs4 import BeautifulSoup
 
-from team_name import TeamName
-from team_status import TeamStatus
+from .team_name import TeamName
+from .team_status import TeamStatus
 
 
 class Match(TypedDict):
@@ -29,12 +29,28 @@ def find_matches(
         status = td_status.text.strip()
         if status != "試合終了":
             continue
-        home_team_name = match_tr.select_one("td.clubName.leftside").text.strip()
-        home_team = next((tn for tn in team_names if tn["short_name"] == home_team_name), None)
-        home_team_score = int(match_tr.select_one("td.point.leftside").text.strip())
-        away_team_name = match_tr.select_one("td.clubName.rightside").text.strip()
-        away_team = next((tn for tn in team_names if tn["short_name"] == away_team_name), None)
-        away_team_score = int(match_tr.select_one("td.point.rightside").text.strip())
+        home_team_name_td = match_tr.select_one("td.clubName.leftside")
+        if home_team_name_td is None:
+            raise ValueError("home_team_name_td is None")
+        home_team_name = home_team_name_td.text.strip()
+        home_team = next(
+            (tn for tn in team_names if tn["short_name"] == home_team_name), None
+        )
+        home_team_score_td = match_tr.select_one("td.point.leftside")
+        if home_team_score_td is None:
+            raise ValueError("home_team_score_td is None")
+        home_team_score = int(home_team_score_td.text.strip())
+        away_team_name_td = match_tr.select_one("td.clubName.rightside")
+        if away_team_name_td is None:
+            raise ValueError("away_team_name_td is None")
+        away_team_name = away_team_name_td.text.strip()
+        away_team = next(
+            (tn for tn in team_names if tn["short_name"] == away_team_name), None
+        )
+        away_team_score_td = match_tr.select_one("td.point.rightside")
+        if away_team_score_td is None:
+            raise ValueError("away_team_score_td is None")
+        away_team_score = int(away_team_score_td.text.strip())
 
         if home_team is None:
             raise ValueError(f"Team not found: {home_team_name}")

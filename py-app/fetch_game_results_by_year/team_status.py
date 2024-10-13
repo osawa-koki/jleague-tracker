@@ -1,7 +1,6 @@
-import json
 from typing import TypedDict
 
-from team_name import TeamName
+from .team_name import TeamName
 
 
 class GameResult(TypedDict):
