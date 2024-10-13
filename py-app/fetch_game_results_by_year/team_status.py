@@ -18,7 +18,13 @@ class TeamStatus:
         self.team_name = team_name
         self.game_results = []
 
-    def add_game_result(self, our_score: int, their_score: int, is_home: bool, opponent_team_name: TeamName):
+    def add_game_result(
+        self,
+        our_score: int,
+        their_score: int,
+        is_home: bool,
+        opponent_team_name: TeamName,
+    ):
         result: GameResult = {
             "our_score": our_score,
             "their_score": their_score,
