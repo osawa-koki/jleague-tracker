@@ -10,10 +10,11 @@ import fetcher from '@/app/_util/fetcher'
 
 import LeagueTable from './_leagueTable'
 import LeagueGraph from './_leagueGraph'
+import LeagueTeam from './_leagueTeam'
 
 const years = Array.from({ length: 2024 - 2017 + 1 }, (_, i) => 2024 - i)
 const categories = ['J1', 'J2', 'J3']
-const displayStyleEnum = ['table', 'graph'] as const
+const displayStyleEnum = ['table', 'graph', 'team'] as const
 
 export default function ResultsPage (): React.JSX.Element {
   const [selectedYear, setSelectedYear] = useState(years[0])
@@ -90,6 +91,7 @@ export default function ResultsPage (): React.JSX.Element {
         </Table>
         {displayStyle === 'table' && <LeagueTable teamStatuses={teamStatuses} />}
         {displayStyle === 'graph' && <LeagueGraph teamStatuses={teamStatuses} />}
+        {displayStyle === 'team' && <LeagueTeam teamStatuses={teamStatuses} />}
       </div>
     </>
   )
