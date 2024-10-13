@@ -4,6 +4,7 @@ import { Form, Table } from 'react-bootstrap'
 import TeamStatus from '@/app/@types/TeamStatus'
 import TeamDetailStatusBySection from '@/app/@types/TeamDetailStatusBySection'
 import { sortByStatus } from '@/app/_util/sortByStatus'
+import sum from '@/app/_util/sum'
 
 interface Props {
   teamStatuses: TeamStatus[]
@@ -87,7 +88,7 @@ export default function LeagueTable(props: Props) {
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{status.teamName.longName}</td>
-              <td>{status.section}</td>
+              <td>{sum(status.win, status.draw, status.lose)}</td>
               <td>{status.win}</td>
               <td>{status.draw}</td>
               <td>{status.lose}</td>
