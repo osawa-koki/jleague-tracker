@@ -48,7 +48,8 @@ export default function LeagueGraph (props: Props): React.JSX.Element {
         switch (true) {
           case result.ourScore > result.theirScore: return 3
           case result.ourScore === result.theirScore: return 1
-          default: return 0
+          case result.ourScore < result.theirScore: return 0
+          default: throw new Error('Invalid game result')
         }
       })
       const accumulatedPoints = pointHistories.reduce<number[]>((acc, point, index) => {
