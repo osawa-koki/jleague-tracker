@@ -115,7 +115,7 @@ export default function LeagueTeam (props: Props): React.JSX.Element {
                   return <><span>{gameResult.theirScore}</span> - <span className='fw-bold'>{gameResult.ourScore}</span></>
                 })()}
               </td>
-              <td></td>
+              <td>vs {gameResult.opponentTeamName.longName}</td>
             </tr>
           ))}
         </tbody>
