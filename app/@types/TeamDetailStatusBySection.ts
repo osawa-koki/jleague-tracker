@@ -1,5 +1,5 @@
-import GameResult from "./GameResult"
-import TeamName from "./TeamName"
+import type GameResult from './GameResult'
+import type TeamName from './TeamName'
 
 export default interface TeamDetailStatusBySection {
   teamName: TeamName
