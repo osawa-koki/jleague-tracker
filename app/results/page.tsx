@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { Alert, Form, Table, Spinner, Button } from 'react-bootstrap'
 import useSWR from 'swr'
 
-import TeamStatus from '@/app/@types/TeamStatus'
+import type TeamStatus from '@/app/@types/TeamStatus'
 import fetcher from '@/app/_util/fetcher'
 
 import LeagueTable from './_leagueTable'
@@ -14,7 +14,7 @@ const years = Array.from({ length: 2024 - 2017 + 1 }, (_, i) => 2024 - i)
 const categories = ['J1', 'J2', 'J3']
 const displayStyleEnum = ['table', 'graph'] as const
 
-export default function ResultsPage(): React.JSX.Element {
+export default function ResultsPage (): React.JSX.Element {
   const [selectedYear, setSelectedYear] = useState(years[0])
   const [selectedCategory, setSelectedCategory] = useState(categories[0])
   const [displayStyle, setDisplayStyle] = useState<typeof displayStyleEnum[number]>('table')
@@ -44,7 +44,7 @@ export default function ResultsPage(): React.JSX.Element {
                 <Form.Control
                   as='select'
                   value={selectedYear}
-                  onChange={(e) => setSelectedYear(parseInt(e.target.value))}
+                  onChange={(e) => { setSelectedYear(parseInt(e.target.value)) }}
                 >
                   {years.map((year) => (
                     <option key={year} value={year}>
@@ -60,7 +60,7 @@ export default function ResultsPage(): React.JSX.Element {
                 <Form.Control
                   as='select'
                   value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  onChange={(e) => { setSelectedCategory(e.target.value) }}
                 >
                   {categories.map((category) => (
                     <option key={category} value={category}>
@@ -78,7 +78,7 @@ export default function ResultsPage(): React.JSX.Element {
                     key={style}
                     className='ms-1'
                     variant={displayStyle === style ? 'primary' : 'light'}
-                    onClick={() => setDisplayStyle(style)}
+                    onClick={() => { setDisplayStyle(style) }}
                   >
                     {style}
                   </Button>

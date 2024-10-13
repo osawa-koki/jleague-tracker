@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react'
 
 import { Form, OverlayTrigger, Table, Tooltip } from 'react-bootstrap'
-import TeamStatus from '@/app/@types/TeamStatus'
-import TeamDetailStatusBySection from '@/app/@types/TeamDetailStatusBySection'
+import type TeamStatus from '@/app/@types/TeamStatus'
+import type TeamDetailStatusBySection from '@/app/@types/TeamDetailStatusBySection'
 import { sortByStatus } from '@/app/_util/sortByStatus'
 import sum from '@/app/_util/sum'
 import Image from 'next/image'
@@ -11,7 +11,7 @@ interface Props {
   teamStatuses: TeamStatus[]
 }
 
-export default function LeagueTable(props: Props) {
+export default function LeagueTable (props: Props): React.JSX.Element {
   const { teamStatuses } = props
 
   const maxSection = useMemo(() => {
@@ -32,7 +32,7 @@ export default function LeagueTable(props: Props) {
       const goalDifference = goalFor - goalAgainst
 
       return {
-        teamName: teamName,
+        teamName,
         section,
         gameResults: targetGameResults,
         points,
@@ -41,7 +41,7 @@ export default function LeagueTable(props: Props) {
         lose,
         goalFor,
         goalAgainst,
-        goalDifference,
+        goalDifference
       }
     })
   }, [section, teamStatuses])
@@ -62,7 +62,7 @@ export default function LeagueTable(props: Props) {
                 min='1'
                 max={maxSection}
                 value={section}
-                onChange={(e) => setSection(parseInt(e.target.value))}
+                onChange={(e) => { setSection(parseInt(e.target.value)) }}
               />
             </td>
             <td>第{section}節</td>
