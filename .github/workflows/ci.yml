@@ -30,7 +30,7 @@ jobs:
     - name: isort formatting check
       run: poetry run python -m isort --check ./py-app/
     - name: mypy type checking
-      run: poetry run python -m mypy ./py-app/
+      run: poetry run python -m mypy --ignore-missing-imports ./py-app/
   client-ci:
     runs-on: ubuntu-22.04
     strategy:

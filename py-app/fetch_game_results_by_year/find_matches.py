@@ -2,8 +2,8 @@ from typing import TypedDict
 
 from bs4 import BeautifulSoup
 
-from .team_name import TeamName
-from .team_status import TeamStatus
+from team_name import TeamName
+from team_status import TeamStatus
 
 
 class Match(TypedDict):

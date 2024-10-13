@@ -1,12 +1,13 @@
 from typing import TypedDict
 
-from .team_name import TeamName
+from team_name import TeamName
 
 
 class GameResult(TypedDict):
     our_score: int
     their_score: int
     is_home: bool
+    opponent_team_name: TeamName
 
 
 class TeamStatus:
@@ -17,11 +18,12 @@ class TeamStatus:
         self.team_name = team_name
         self.game_results = []
 
-    def add_game_result(self, our_score: int, their_score: int, is_home: bool):
+    def add_game_result(self, our_score: int, their_score: int, is_home: bool, opponent_team_name: TeamName):
         result: GameResult = {
             "our_score": our_score,
             "their_score": their_score,
             "is_home": is_home,
+            "opponent_team_name": opponent_team_name,
         }
         self.game_results.append(result)
 
@@ -31,6 +33,11 @@ class TeamStatus:
                 "our_score": game_result["our_score"],
                 "their_score": game_result["their_score"],
                 "is_home": game_result["is_home"],
+                "opponent_team_name": {
+                    "long_name": game_result["opponent_team_name"]["long_name"],
+                    "short_name": game_result["opponent_team_name"]["short_name"],
+                    "english_name": game_result["opponent_team_name"]["english_name"],
+                },
             }
             for game_result in self.game_results
         ]
