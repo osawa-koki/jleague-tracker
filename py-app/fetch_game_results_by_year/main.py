@@ -1,4 +1,5 @@
 import json
+import os
 from typing import Literal
 
 from team_name import TeamName
@@ -11,6 +12,9 @@ categories: list[Literal["J1", "J2", "J3"]] = ["J1", "J2", "J3"]
 for year in years:
     for category in categories:
         key = f"{year}_{category.lower()}"
+        if os.path.exists(f"./data/team_statuses/{key}.json"):
+            print(f"⭐️ {key} already exists. skipping...")
+            continue
         print(f"⭐️ Processing {key}")
         with open(f"./data/teams/{key}.json", "r") as f:
             team_names: list[TeamName] = json.load(f)
