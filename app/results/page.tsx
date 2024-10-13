@@ -20,7 +20,7 @@ export default function ResultsPage (): React.JSX.Element {
   const [displayStyle, setDisplayStyle] = useState<typeof displayStyleEnum[number]>('table')
 
   const { data: teamStatuses, error } = useSWR<TeamStatus[]>(
-    `/team_statuses/${selectedYear}_${selectedCategory}.json`,
+    `/team_statuses/${selectedYear}_${selectedCategory.toLowerCase()}.json`,
     fetcher
   )
 
