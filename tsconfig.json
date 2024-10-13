@@ -39,6 +39,8 @@
   ],
   "exclude": [
     "node_modules",
-    "playwright.config.ts"
+    "playwright.config.ts",
+    "next.config.js",
+    ".next"
   ]
 }
