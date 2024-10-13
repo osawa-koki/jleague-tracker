@@ -1,7 +1,6 @@
 from typing import Literal
 
 import requests
-
 from find_matches import find_matches
 from team_name import TeamName
 from team_status import TeamStatus
