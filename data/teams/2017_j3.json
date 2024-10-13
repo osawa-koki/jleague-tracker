@@ -1,0 +1,87 @@
+[
+  {
+    "long_name": "グルージャ盛岡",
+    "short_name": "岩手",
+    "english_name": "iwate"
+  },
+  {
+    "long_name": "ブラウブリッツ秋田",
+    "short_name": "秋田",
+    "english_name": "akita"
+  },
+  {
+    "long_name": "福島ユナイテッドＦＣ",
+    "short_name": "福島",
+    "english_name": "fukushima"
+  },
+  {
+    "long_name": "栃木ＳＣ",
+    "short_name": "栃木",
+    "english_name": "tochigi"
+  },
+  {
+    "long_name": "Ｙ．Ｓ．Ｃ．Ｃ．横浜",
+    "short_name": "YSCC横浜",
+    "english_name": "yscc"
+  },
+  {
+    "long_name": "ＳＣ相模原",
+    "short_name": "相模原",
+    "english_name": "sagamihara"
+  },
+  {
+    "long_name": "ＡＣ長野パルセイロ",
+    "short_name": "長野",
+    "english_name": "nagano"
+  },
+  {
+    "long_name": "カターレ富山",
+    "short_name": "富山",
+    "english_name": "toyama"
+  },
+  {
+    "long_name": "藤枝ＭＹＦＣ",
+    "short_name": "藤枝",
+    "english_name": "fujieda"
+  },
+  {
+    "long_name": "アスルクラロ沼津",
+    "short_name": "沼津",
+    "english_name": "numazu"
+  },
+  {
+    "long_name": "ガイナーレ鳥取",
+    "short_name": "鳥取",
+    "english_name": "tottori"
+  },
+  {
+    "long_name": "ギラヴァンツ北九州",
+    "short_name": "北九州",
+    "english_name": "kitakyushu"
+  },
+  {
+    "long_name": "鹿児島ユナイテッドＦＣ",
+    "short_name": "鹿児島",
+    "english_name": "kagoshima"
+  },
+  {
+    "long_name": "ＦＣ琉球",
+    "short_name": "琉球",
+    "english_name": "ryukyu"
+  },
+  {
+    "long_name": "ＦＣ東京Ｕ－２３",
+    "short_name": "Ｆ東23",
+    "english_name": "ftokyo_u23"
+  },
+  {
+    "long_name": "ガンバ大阪Ｕ－２３",
+    "short_name": "Ｇ大23",
+    "english_name": "gamba_u23"
+  },
+  {
+    "long_name": "セレッソ大阪Ｕ－２３",
+    "short_name": "Ｃ大23",
+    "english_name": "cosaka_u23"
+  }
+]

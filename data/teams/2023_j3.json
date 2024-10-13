@@ -1,0 +1,102 @@
+[
+  {
+    "long_name": "ヴァンラーレ八戸",
+    "short_name": "八戸",
+    "english_name": "vanraure"
+  },
+  {
+    "long_name": "いわてグルージャ盛岡",
+    "short_name": "岩手",
+    "english_name": "iwate"
+  },
+  {
+    "long_name": "福島ユナイテッドＦＣ",
+    "short_name": "福島",
+    "english_name": "fukushima"
+  },
+  {
+    "long_name": "Ｙ．Ｓ．Ｃ．Ｃ．横浜",
+    "short_name": "YSCC横浜",
+    "english_name": "yscc"
+  },
+  {
+    "long_name": "ＳＣ相模原",
+    "short_name": "相模原",
+    "english_name": "sagamihara"
+  },
+  {
+    "long_name": "松本山雅ＦＣ",
+    "short_name": "松本",
+    "english_name": "matsumoto"
+  },
+  {
+    "long_name": "ＡＣ長野パルセイロ",
+    "short_name": "長野",
+    "english_name": "nagano"
+  },
+  {
+    "long_name": "カターレ富山",
+    "short_name": "富山",
+    "english_name": "toyama"
+  },
+  {
+    "long_name": "アスルクラロ沼津",
+    "short_name": "沼津",
+    "english_name": "numazu"
+  },
+  {
+    "long_name": "ＦＣ岐阜",
+    "short_name": "岐阜",
+    "english_name": "gifu"
+  },
+  {
+    "long_name": "ＦＣ大阪",
+    "short_name": "大阪",
+    "english_name": "osaka"
+  },
+  {
+    "long_name": "奈良クラブ",
+    "short_name": "奈良",
+    "english_name": "nara"
+  },
+  {
+    "long_name": "ガイナーレ鳥取",
+    "short_name": "鳥取",
+    "english_name": "tottori"
+  },
+  {
+    "long_name": "カマタマーレ讃岐",
+    "short_name": "讃岐",
+    "english_name": "sanuki"
+  },
+  {
+    "long_name": "愛媛FC",
+    "short_name": "愛媛",
+    "english_name": "ehime"
+  },
+  {
+    "long_name": "ＦＣ今治",
+    "short_name": "今治",
+    "english_name": "imabari"
+  },
+  {
+    "long_name": "ギラヴァンツ北九州",
+    "short_name": "北九州",
+    "english_name": "kitakyushu"
+  },
+  {
+    "long_name": "テゲバジャーロ宮崎",
+    "short_name": "宮崎",
+    "english_name": "miyazaki"
+  },
+  {
+    "long_name": "鹿児島ユナイテッドＦＣ",
+    "short_name": "鹿児島",
+    "english_name": "kagoshima"
+  },
+  {
+    "long_name": "ＦＣ琉球",
+    "short_name": "琉球",
+    "english_name": "ryukyu"
+  }
+]

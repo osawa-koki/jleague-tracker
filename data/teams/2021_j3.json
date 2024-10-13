@@ -1,0 +1,77 @@
+[
+  {
+    "long_name": "ヴァンラーレ八戸",
+    "short_name": "八戸",
+    "english_name": "vanraure"
+  },
+  {
+    "long_name": "いわてグルージャ盛岡",
+    "short_name": "岩手",
+    "english_name": "iwate"
+  },
+  {
+    "long_name": "福島ユナイテッドＦＣ",
+    "short_name": "福島",
+    "english_name": "fukushima"
+  },
+  {
+    "long_name": "Ｙ．Ｓ．Ｃ．Ｃ．横浜",
+    "short_name": "YSCC横浜",
+    "english_name": "yscc"
+  },
+  {
+    "long_name": "ＡＣ長野パルセイロ",
+    "short_name": "長野",
+    "english_name": "nagano"
+  },
+  {
+    "long_name": "カターレ富山",
+    "short_name": "富山",
+    "english_name": "toyama"
+  },
+  {
+    "long_name": "藤枝ＭＹＦＣ",
+    "short_name": "藤枝",
+    "english_name": "fujieda"
+  },
+  {
+    "long_name": "アスルクラロ沼津",
+    "short_name": "沼津",
+    "english_name": "numazu"
+  },
+  {
+    "long_name": "ＦＣ岐阜",
+    "short_name": "岐阜",
+    "english_name": "gifu"
+  },
+  {
+    "long_name": "ガイナーレ鳥取",
+    "short_name": "鳥取",
+    "english_name": "tottori"
+  },
+  {
+    "long_name": "カマタマーレ讃岐",
+    "short_name": "讃岐",
+    "english_name": "sanuki"
+  },
+  {
+    "long_name": "ＦＣ今治",
+    "short_name": "今治",
+    "english_name": "imabari"
+  },
+  {
+    "long_name": "ロアッソ熊本",
+    "short_name": "熊本",
+    "english_name": "kumamoto"
+  },
+  {
+    "long_name": "テゲバジャーロ宮崎",
+    "short_name": "宮崎",
+    "english_name": "miyazaki"
+  },
+  {
+    "long_name": "鹿児島ユナイテッドＦＣ",
+    "short_name": "鹿児島",
+    "english_name": "kagoshima"
+  }
+]
