@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
-from bs4 import BeautifulSoup, Tag
-
 from typing import TypedDict
+
+from bs4 import BeautifulSoup, Tag
 
 
 class TeamName(TypedDict):
@@ -23,7 +23,9 @@ def find_teams(html: str) -> list[TeamName]:
     teams = [th.text.strip() for th in table.select("tr th")]
     team_names: list[TeamName] = []
     for team in teams:
-        matched_team = next((item for item in name_mapper if item["long_name"] == team), None)
+        matched_team = next(
+            (item for item in name_mapper if item["long_name"] == team), None
+        )
         if matched_team is not None:
             team_names.append(matched_team)
         else:
