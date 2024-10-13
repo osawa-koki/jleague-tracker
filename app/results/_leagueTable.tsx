@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from 'react'
 
-import { Form, Table } from 'react-bootstrap'
+import { Form, OverlayTrigger, Table, Tooltip } from 'react-bootstrap'
 import TeamStatus from '@/app/@types/TeamStatus'
 import TeamDetailStatusBySection from '@/app/@types/TeamDetailStatusBySection'
 import { sortByStatus } from '@/app/_util/sortByStatus'
 import sum from '@/app/_util/sum'
+import Image from 'next/image'
 
 interface Props {
   teamStatuses: TeamStatus[]
@@ -33,6 +34,7 @@ export default function LeagueTable(props: Props) {
       return {
         teamName: teamName,
         section,
+        gameResults: targetGameResults,
         points,
         win,
         draw,
@@ -87,7 +89,32 @@ export default function LeagueTable(props: Props) {
           {sortedTeamDetailStatuses.map((status, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
-              <td>{status.teamName.longName}</td>
+              <td>
+                <OverlayTrigger
+                  placement='top'
+                  delay={{ show: 100, hide: 500 }}
+                  overlay={(props) => {
+                    return (
+                      <Tooltip {...props}>
+                        {status.gameResults.map((result, index) => {
+                          switch (true) {
+                            case result.ourScore === result.theirScore:
+                              return <Image key={index} src='/images/draw.svg' alt='引分' width={16} height={16} />
+                            case result.ourScore > result.theirScore:
+                              return <Image key={index} src='/images/win.svg' alt='勝利' width={16} height={16} />
+                            case result.ourScore < result.theirScore:
+                              return <Image key={index} src='/images/loss.svg' alt='敗北' width={16} height={16} />
+                            default:
+                              throw new Error('Unexpected result')
+                          }
+                        })}
+                      </Tooltip>
+                    )
+                  }}
+                >
+                  <span>{status.teamName.longName}</span>
+                </OverlayTrigger>
+              </td>
               <td>{sum(status.win, status.draw, status.lose)}</td>
               <td>{status.win}</td>
               <td>{status.draw}</td>
