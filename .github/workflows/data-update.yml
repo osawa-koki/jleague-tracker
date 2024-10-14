@@ -19,9 +19,9 @@ jobs:
         curl -sSL https://install.python-poetry.org | python3 -
         echo "$HOME/.local/bin" >> $GITHUB_PATH
     - name: Install dependencies
-      run: poetry install --no-root
+      run: poetry install --no-root --no-dev
     - name: Execute data update
-      run: poetry run ./py-app/fetch_game_results_by_year/main.py
+      run: poetry run python ./py-app/fetch_game_results_by_year/main.py
     - name: Check if the file exists
       run: |
         if [[ -z $(git status --porcelain) ]]; then
