@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import { usePathname } from 'next/navigation'
 
 import { ToastContainer } from 'react-toastify'
@@ -39,7 +39,9 @@ export default function RootLayout ({
       </head>
       <body>
         <div id="Wrapper">
-          <main>{children}</main>
+          <Suspense>
+            <main>{children}</main>
+          </Suspense>
           <Menu currentPage={currentPage} />
           <ToastContainer />
         </div>
