@@ -57,12 +57,6 @@ jobs:
       run: |
         PR_URL=$(gh pr create --title "Update data ($(date +'%Y-%m-%d'))" --body "Update data ($(date +'%Y-%m-%d'))")
         echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
-    - name: Approve pull request
-      if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      run: |
-        gh pr review --approve ${{ steps.create_pr.outputs.pr_url }}
     - name: Merge pull request
       if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
       env:
