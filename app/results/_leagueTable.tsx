@@ -81,6 +81,7 @@ export default function LeagueTable (props: Props): React.JSX.Element {
             <td>
               <Form.Range
                 id='sectionRange'
+                name='section'
                 min='1'
                 max={maxSection}
                 value={section}
@@ -92,7 +93,7 @@ export default function LeagueTable (props: Props): React.JSX.Element {
         </tbody>
       </Table>
       <hr />
-      <Table>
+      <Table id='league-table'>
         <thead>
           <tr>
             <th>順位</th>

@@ -47,7 +47,7 @@ export default function LeagueTeam (props: Props): React.JSX.Element {
   return (
     <>
       <h2>チーム成績</h2>
-      <Form.Select value={selectedTeam.teamName.shortName} onChange={(e) => {
+      <Form.Select name='team' value={selectedTeam.teamName.shortName} onChange={(e) => {
         saveSearchParams('team', e.target.value)
       }}>
         {teamStatuses.map((ts) => (
@@ -56,7 +56,7 @@ export default function LeagueTeam (props: Props): React.JSX.Element {
       </Form.Select>
       <hr />
       <h3>統計</h3>
-      <Table>
+      <Table id='league-team-stats'>
         <tbody>
           <tr>
             <th>試合数</th>
@@ -106,7 +106,7 @@ export default function LeagueTeam (props: Props): React.JSX.Element {
       </Table>
       <hr />
       <h3>試合結果</h3>
-      <Table>
+      <Table id='league-team-results'>
         <thead>
           <tr>
             <th>節</th>

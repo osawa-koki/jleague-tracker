@@ -15,6 +15,7 @@
   "type": "module",
   "scripts": {
     "dev": "yarn next dev --port 8000",
+    "server": "http-server ./out/ --port 8000",
     "build": "next build",
     "start": "next start",
     "test": "playwright test",
@@ -52,7 +53,8 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.34.1"
+    "eslint-plugin-react": "^7.34.1",
+    "http-server": "^14.1.1"
   },
   "resolutions": {
     "strip-ansi": "^6.0.0"
