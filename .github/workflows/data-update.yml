@@ -43,13 +43,13 @@ jobs:
         git config --global user.name "GitHub Action"
         git add .
         git commit -m "Update data"
-        git push -u origin "data-update/$(date +'%Y-%m-%d')"
+        git push -u origin "data-update/$(date +'%Y-%m-%d')_${{ github.run_id }}"
     - name: Create pull request
       if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        gh pr create --title "Update data ($(date +'%Y-%m-%d'))" --body "Update data ($(date +'%Y-%m-%d'))"
+        gh pr create --title "Update data ($(date +'%Y-%m-%d')_${{ github.run_id }})" --body "Update data ($(date +'%Y-%m-%d')_${{ github.run_id }})"
     - name: Approve pull request
       if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
       env:
