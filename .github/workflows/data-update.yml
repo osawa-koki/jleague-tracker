@@ -50,3 +50,15 @@ jobs:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         gh pr create --title "Update data ($(date +'%Y-%m-%d'))" --body "Update data ($(date +'%Y-%m-%d'))"
+    - name: Approve pull request
+      if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        gh pr review --apprve
+    - name: Merge pull request
+      if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        gh pr merge --auto
