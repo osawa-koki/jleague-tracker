@@ -1,4 +1,8 @@
-import React, { useMemo, useState } from 'react'
+'use client'
+
+import React, { useEffect, useMemo, useState } from 'react'
+
+import { useSearchParams } from 'next/navigation'
 
 import { Form, Table } from 'react-bootstrap'
 
@@ -12,6 +16,8 @@ interface Props {
 export default function LeagueTeam (props: Props): React.JSX.Element {
   const { teamStatuses } = props
 
+  const searchParams = useSearchParams()
+
   const [selectedTeam, setSelectedTeam] = useState<TeamStatus>(teamStatuses[0])
 
   const detail = useMemo(() => {
@@ -20,11 +26,29 @@ export default function LeagueTeam (props: Props): React.JSX.Element {
     }
   }, [selectedTeam])
 
+  useEffect(() => {
+    const team = searchParams.get('team')
+    const teamStatus = teamStatuses.find((ts) => ts.teamName.englishName === team)
+    if (team != null && teamStatus != null) {
+      setSelectedTeam(teamStatus)
+    } else {
+      setSelectedTeam(teamStatuses[0])
+    }
+  }, [searchParams, teamStatuses])
+
+  function saveSearchParams (key: 'team', value: string): void {
+    const englishName = teamStatuses.find((ts) => ts.teamName.shortName === value)?.teamName.englishName
+    if (englishName == null) return
+    const url = new URL(window.location.href)
+    url.searchParams.set(key, englishName)
+    window.history.pushState({ path: url.href }, '', url.href)
+  }
+
   return (
     <>
       <h2>チーム成績</h2>
       <Form.Select value={selectedTeam.teamName.shortName} onChange={(e) => {
-        setSelectedTeam(teamStatuses.find((ts) => ts.teamName.shortName === e.target.value) ?? teamStatuses[0])
+        saveSearchParams('team', e.target.value)
       }}>
         {teamStatuses.map((ts) => (
           <option key={ts.teamName.shortName} value={ts.teamName.shortName}>{ts.teamName.longName}</option>

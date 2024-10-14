@@ -1,6 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
+import { useSearchParams } from 'next/navigation'
 
 import { Alert, Form, Table, Spinner, Button } from 'react-bootstrap'
 import useSWR from 'swr'
@@ -13,18 +15,49 @@ import LeagueGraph from './_leagueGraph'
 import LeagueTeam from './_leagueTeam'
 
 const years = Array.from({ length: 2024 - 2017 + 1 }, (_, i) => 2024 - i)
-const categories = ['J1', 'J2', 'J3']
-const displayStyleEnum = ['table', 'graph', 'team'] as const
+const categoryEnum = ['J1', 'J2', 'J3'] as const
+const displayEnum = ['table', 'graph', 'team'] as const
 
 export default function ResultsPage (): React.JSX.Element {
-  const [selectedYear, setSelectedYear] = useState(years[0])
-  const [selectedCategory, setSelectedCategory] = useState(categories[0])
-  const [displayStyle, setDisplayStyle] = useState<typeof displayStyleEnum[number]>('table')
+  const searchParams = useSearchParams()
+
+  const [selectedYear, setSelectedYear] = useState<number | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<typeof categoryEnum[number] | null>(null)
+  const [selectedDisplay, setSelectedDisplay] = useState<typeof displayEnum[number] | null>(null)
 
   const { data: teamStatuses, error } = useSWR<TeamStatus[]>(
-    `/team_statuses/${selectedYear}_${selectedCategory.toLowerCase()}.json`,
+    selectedYear != null && selectedCategory != null
+      ? `/team_statuses/${selectedYear}_${selectedCategory.toLowerCase()}.json`
+      : null,
     fetcher
   )
+
+  useEffect(() => {
+    const year = searchParams.get('year')
+    const category = searchParams.get('category')?.toUpperCase()
+    const display = searchParams.get('display')
+    if (year != null && years.includes(parseInt(year))) {
+      setSelectedYear(parseInt(year))
+    } else {
+      setSelectedYear(years[0])
+    }
+    if (category != null && categoryEnum.includes(category as typeof categoryEnum[number])) {
+      setSelectedCategory(category as typeof categoryEnum[number])
+    } else {
+      setSelectedCategory(categoryEnum[0])
+    }
+    if (display != null && displayEnum.includes(display as typeof displayEnum[number])) {
+      setSelectedDisplay(display as typeof displayEnum[number])
+    } else {
+      setSelectedDisplay(displayEnum[0])
+    }
+  }, [searchParams])
+
+  function saveSearchParams (key: 'year' | 'category' | 'display', value: string): void {
+    const url = new URL(window.location.href)
+    url.searchParams.set(key, value)
+    window.history.pushState({ path: url.href }, '', url.href)
+  }
 
   if (teamStatuses == null) {
     return <Spinner animation='border' />
@@ -32,6 +65,10 @@ export default function ResultsPage (): React.JSX.Element {
 
   if (error != null) {
     return <Alert variant='danger'>{error.message}</Alert>
+  }
+
+  if (selectedYear == null || selectedCategory == null || selectedDisplay == null) {
+    return <Spinner animation='border' />
   }
 
   return (
@@ -46,7 +83,7 @@ export default function ResultsPage (): React.JSX.Element {
                 <Form.Control
                   as='select'
                   value={selectedYear}
-                  onChange={(e) => { setSelectedYear(parseInt(e.target.value)) }}
+                  onChange={(e) => { saveSearchParams('year', e.target.value) }}
                 >
                   {years.map((year) => (
                     <option key={year} value={year}>
@@ -62,9 +99,9 @@ export default function ResultsPage (): React.JSX.Element {
                 <Form.Control
                   as='select'
                   value={selectedCategory}
-                  onChange={(e) => { setSelectedCategory(e.target.value) }}
+                  onChange={(e) => { saveSearchParams('category', e.target.value) }}
                 >
-                  {categories.map((category) => (
+                  {categoryEnum.map((category) => (
                     <option key={category} value={category}>
                       {category}
                     </option>
@@ -75,12 +112,12 @@ export default function ResultsPage (): React.JSX.Element {
             <tr>
               <th>Display</th>
               <td>
-                {displayStyleEnum.map((style) => (
+                {displayEnum.map((style) => (
                   <Button
                     key={style}
                     className='ms-1'
-                    variant={displayStyle === style ? 'primary' : 'light'}
-                    onClick={() => { setDisplayStyle(style) }}
+                    variant={selectedDisplay === style ? 'primary' : 'light'}
+                    onClick={() => { saveSearchParams('display', style) }}
                   >
                     {style}
                   </Button>
@@ -89,9 +126,9 @@ export default function ResultsPage (): React.JSX.Element {
             </tr>
           </tbody>
         </Table>
-        {displayStyle === 'table' && <LeagueTable teamStatuses={teamStatuses} />}
-        {displayStyle === 'graph' && <LeagueGraph teamStatuses={teamStatuses} />}
-        {displayStyle === 'team' && <LeagueTeam teamStatuses={teamStatuses} />}
+        {selectedDisplay === 'table' && <LeagueTable teamStatuses={teamStatuses} />}
+        {selectedDisplay === 'graph' && <LeagueGraph teamStatuses={teamStatuses} />}
+        {selectedDisplay === 'team' && <LeagueTeam teamStatuses={teamStatuses} />}
       </div>
     </>
   )
