@@ -1,6 +1,11 @@
-import React, { useMemo, useState } from 'react'
+'use client'
+
+import React, { useEffect, useMemo, useState } from 'react'
+
+import { useSearchParams } from 'next/navigation'
 
 import { Form, OverlayTrigger, Table, Tooltip } from 'react-bootstrap'
+
 import type TeamStatus from '@/app/@types/TeamStatus'
 import type TeamDetailStatusBySection from '@/app/@types/TeamDetailStatusBySection'
 import { sortByStatus } from '@/app/_util/sortByStatus'
@@ -13,6 +18,8 @@ interface Props {
 
 export default function LeagueTable (props: Props): React.JSX.Element {
   const { teamStatuses } = props
+
+  const searchParams = useSearchParams()
 
   const maxSection = useMemo(() => {
     return Math.max(...teamStatuses.map(status => status.gameResults.length))
@@ -50,6 +57,21 @@ export default function LeagueTable (props: Props): React.JSX.Element {
     return teamDetailStatuses.sort(sortByStatus)
   }, [teamDetailStatuses])
 
+  useEffect(() => {
+    const section = searchParams.get('section')
+    if (section != null && section.length >= 1 && parseInt(section) <= maxSection) {
+      setSection(parseInt(section))
+    } else {
+      setSection(maxSection)
+    }
+  }, [searchParams, maxSection])
+
+  function saveSearchParams (key: 'section', value: string): void {
+    const url = new URL(window.location.href)
+    url.searchParams.set(key, value)
+    window.history.pushState({ path: url.href }, '', url.href)
+  }
+
   return (
     <div>
       <h2>リーグ表</h2>
@@ -62,7 +84,7 @@ export default function LeagueTable (props: Props): React.JSX.Element {
                 min='1'
                 max={maxSection}
                 value={section}
-                onChange={(e) => { setSection(parseInt(e.target.value)) }}
+                onChange={(e) => { saveSearchParams('section', e.target.value) }}
               />
             </td>
             <td>第{section}節</td>
