@@ -1,0 +1,49 @@
+name: data-update
+
+on: [ workflow_dispatch ]
+
+jobs:
+  fetch_game_results_by_year:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        python-version: [ "3.12" ]
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+    - name: Install dependencies
+      run: poetry install --no-root
+    - name: Execute data update
+      run: poetry run ./py-app/fetch_game_results_by_year/main.py
+    - name: Check if the file exists
+      run: |
+        if [[ -z $(git status --porcelain) ]]; then
+          echo "No changes to commit"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "Changes to commit"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
+    - name: Create new branch
+      if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
+      run: |
+        git checkout -b "data-update/$(date +'%Y-%m-%d')"
+    - name: Commit changes
+      if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
+      run: |
+        git add .
+        git commit -m "Update data"
+        git push -u origin "data-update/$(date +'%Y-%m-%d')"
+    - name: Create pull request
+      if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        gh pr create --title "Update data ($(date +'%Y-%m-%d'))" --body "Update data ($(date +'%Y-%m-%d'))"
