@@ -62,4 +62,4 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        gh pr merge --auto ${{ steps.create_pr.outputs.pr_url }}
+        gh pr merge --merge --auto ${{ steps.create_pr.outputs.pr_url }}
