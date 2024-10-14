@@ -92,7 +92,7 @@ export default function LeagueTable (props: Props): React.JSX.Element {
         </tbody>
       </Table>
       <hr />
-      <Table>
+      <Table id='league-table'>
         <thead>
           <tr>
             <th>順位</th>

@@ -82,6 +82,7 @@ export default function ResultsPage (): React.JSX.Element {
               <td>
                 <Form.Control
                   as='select'
+                  name='year'
                   value={selectedYear}
                   onChange={(e) => { saveSearchParams('year', e.target.value) }}
                 >
@@ -98,6 +99,7 @@ export default function ResultsPage (): React.JSX.Element {
               <td>
                 <Form.Control
                   as='select'
+                  name='category'
                   value={selectedCategory}
                   onChange={(e) => { saveSearchParams('category', e.target.value) }}
                 >
@@ -115,8 +117,10 @@ export default function ResultsPage (): React.JSX.Element {
                 {displayEnum.map((style) => (
                   <Button
                     key={style}
+                    name='display'
+                    value={style}
                     className='ms-1'
-                    variant={selectedDisplay === style ? 'primary' : 'light'}
+                    variant={selectedDisplay === style ? 'primary active' : 'light'}
                     onClick={() => { saveSearchParams('display', style) }}
                   >
                     {style}
