@@ -1,6 +1,9 @@
 name: data-update
 
-on: [ workflow_dispatch ]
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   fetch_game_results_by_year:
@@ -16,7 +19,7 @@ jobs:
         curl -sSL https://install.python-poetry.org | python3 -
         echo "$HOME/.local/bin" >> $GITHUB_PATH
     - name: Install dependencies
-      run: poetry install --no-root --no-dev
+      run: poetry install --no-root --only main
     - name: Execute data update
       run: poetry run python ./py-app/fetch_game_results_by_year/main.py
     - id: has_changes
