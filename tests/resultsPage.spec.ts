@@ -36,6 +36,45 @@ test.describe('Results page', () => {
     expect(page.url()).toContain('display=graph')
   })
 
+  test('can select section at table tab', async ({ page }) => {
+    await page.click('button[name=display][value=table]')
+    await page.waitForFunction(() => {
+      const button = document.querySelector('button[name=display][value=table]') as HTMLButtonElement
+      return button?.classList?.contains('active')
+    })
+    await page.fill('input[name=section]', '10')
+    await page.waitForFunction(() => {
+      const range = document.querySelector('input[name=section]') as HTMLInputElement
+      return range?.value === '10'
+    })
+    await expect(page.getByText('第10節')).toBeVisible()
+    expect(page.url()).toContain('section=10')
+  })
+
+  test('can select team at team tab', async ({ page }) => {
+    await page.selectOption('select[name=year]', '2024')
+    await page.waitForFunction(() => {
+      const select = document.querySelector('select[name=year]') as HTMLSelectElement
+      return select?.value === '2024'
+    })
+    await page.selectOption('select[name=category]', 'J2')
+    await page.waitForFunction(() => {
+      const select = document.querySelector('select[name=category]') as HTMLSelectElement
+      return select?.value === 'J2'
+    })
+    await page.click('button[name=display][value=team]')
+    await page.waitForFunction(() => {
+      const button = document.querySelector('button[name=display][value=team]') as HTMLButtonElement
+      return button?.classList?.contains('active')
+    })
+    await page.selectOption('select[name=team]', '熊本')
+    await page.waitForFunction(() => {
+      const select = document.querySelector('select[name=team]') as HTMLSelectElement
+      return select?.value === '熊本'
+    })
+    expect(page.url()).toContain('team=kumamoto')
+  })
+
   test('shows roasso won j3 with 54 points in 2021', async ({ page }) => {
     await page.selectOption('select[name=year]', '2021')
     await page.waitForFunction(() => {
