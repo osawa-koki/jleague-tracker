@@ -70,7 +70,22 @@ export default function LeagueGraph (props: Props): React.JSX.Element {
   return (
     <>
       <h2>勝点グラフ</h2>
-      <Line data={graphData} />
+      <Line
+        data={graphData}
+        width={160}
+        height={160}
+        options={{
+          plugins: {
+            legend: {
+              labels: {
+                usePointStyle: true,
+                pointStyle: 'circle',
+                font: { size: 12 }
+              }
+            }
+          }
+        }}
+      />
     </>
   )
 }
