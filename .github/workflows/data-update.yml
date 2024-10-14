@@ -19,7 +19,8 @@ jobs:
       run: poetry install --no-root --no-dev
     - name: Execute data update
       run: poetry run python ./py-app/fetch_game_results_by_year/main.py
-    - name: Check if the file exists
+    - id: has_changes
+      name: Check if the file exists
       run: |
         if [[ -z $(git status --porcelain) ]]; then
           echo "No changes to commit"
