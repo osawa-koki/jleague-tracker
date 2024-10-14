@@ -32,10 +32,15 @@ jobs:
           echo "Changes to commit"
           echo "has_changes=true" >> $GITHUB_OUTPUT
         fi
+    - id: set_branch_name
+      name: Set branch name
+      if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
+      run: |
+        echo "branch_name=data-update/$(date +'%Y-%m-%d')_${{ github.run_id }}" >> $GITHUB_OUTPUT
     - name: Create new branch
       if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
       run: |
-        git checkout -b "data-update/$(date +'%Y-%m-%d')"
+        git checkout -b ${{ steps.set_branch_name.outputs.branch_name }}
     - name: Commit changes
       if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
       run: |
@@ -43,13 +48,13 @@ jobs:
         git config --global user.name "GitHub Action"
         git add .
         git commit -m "Update data"
-        git push -u origin "data-update/$(date +'%Y-%m-%d')_${{ github.run_id }}"
+        git push -u origin ${{ steps.set_branch_name.outputs.branch_name }}
     - name: Create pull request
       if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        gh pr create --title "Update data ($(date +'%Y-%m-%d')_${{ github.run_id }})" --body "Update data ($(date +'%Y-%m-%d')_${{ github.run_id }})"
+        gh pr create --title "Update data ($(date +'%Y-%m-%d'))" --body "Update data ($(date +'%Y-%m-%d'))"
     - name: Approve pull request
       if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
       env:
