@@ -5,12 +5,9 @@ on: [ workflow_dispatch ]
 jobs:
   fetch_game_results_by_year:
     runs-on: ubuntu-22.04
-    strategy:
-      matrix:
-        python-version: [ "3.12" ]
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python 3.12
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
@@ -22,7 +19,8 @@ jobs:
       run: poetry install --no-root --no-dev
     - name: Execute data update
       run: poetry run python ./py-app/fetch_game_results_by_year/main.py
-    - name: Check if the file exists
+    - id: has_changes
+      name: Check if the file exists
       run: |
         if [[ -z $(git status --porcelain) ]]; then
           echo "No changes to commit"
