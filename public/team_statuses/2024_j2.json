@@ -345,6 +345,16 @@
           "short_name": "秋田",
           "english_name": "akita"
         }
+      },
+      {
+        "our_score": 3,
+        "their_score": 0,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "横浜ＦＣ",
+          "short_name": "横浜FC",
+          "english_name": "yokohamafc"
+        }
       }
     ]
   },
@@ -2788,6 +2798,16 @@
           "short_name": "群馬",
           "english_name": "kusatsu"
         }
+      },
+      {
+        "our_score": 2,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ヴァンフォーレ甲府",
+          "short_name": "甲府",
+          "english_name": "kofu"
+        }
       }
     ]
   },
@@ -3137,6 +3157,16 @@
           "short_name": "鹿児島",
           "english_name": "kagoshima"
         }
+      },
+      {
+        "our_score": 0,
+        "their_score": 3,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ベガルタ仙台",
+          "short_name": "仙台",
+          "english_name": "sendai"
+        }
       }
     ]
   },
@@ -3485,6 +3515,16 @@
           "long_name": "ファジアーノ岡山",
           "short_name": "岡山",
           "english_name": "okayama"
+        }
+      },
+      {
+        "our_score": 1,
+        "their_score": 2,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ジェフユナイテッド千葉",
+          "short_name": "千葉",
+          "english_name": "chiba"
         }
       }
     ]
@@ -5580,6 +5620,16 @@
           "short_name": "栃木",
           "english_name": "tochigi"
         }
+      },
+      {
+        "our_score": 0,
+        "their_score": 4,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "鹿児島ユナイテッドＦＣ",
+          "short_name": "鹿児島",
+          "english_name": "kagoshima"
+        }
       }
     ]
   },
@@ -6975,6 +7025,16 @@
           "long_name": "横浜ＦＣ",
           "short_name": "横浜FC",
           "english_name": "yokohamafc"
+        }
+      },
+      {
+        "our_score": 4,
+        "their_score": 0,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "愛媛FC",
+          "short_name": "愛媛",
+          "english_name": "ehime"
         }
       }
     ]
