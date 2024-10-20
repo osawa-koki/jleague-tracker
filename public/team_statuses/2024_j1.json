@@ -335,6 +335,16 @@
           "short_name": "Ｇ大阪",
           "english_name": "gosaka"
         }
+      },
+      {
+        "our_score": 2,
+        "their_score": 0,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "名古屋グランパス",
+          "short_name": "名古屋",
+          "english_name": "nagoya"
+        }
       }
     ]
   },
@@ -664,6 +674,16 @@
           "short_name": "新潟",
           "english_name": "niigata"
         }
+      },
+      {
+        "our_score": 0,
+        "their_score": 0,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "アビスパ福岡",
+          "short_name": "福岡",
+          "english_name": "fukuoka"
+        }
       }
     ]
   },
@@ -982,6 +1002,16 @@
           "long_name": "セレッソ大阪",
           "short_name": "Ｃ大阪",
           "english_name": "cosaka"
+        }
+      },
+      {
+        "our_score": 1,
+        "their_score": 2,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "東京ヴェルディ",
+          "short_name": "東京Ｖ",
+          "english_name": "tokyov"
         }
       }
     ]
@@ -1311,6 +1341,16 @@
           "long_name": "横浜Ｆ・マリノス",
           "short_name": "横浜FM",
           "english_name": "yokohamafm"
+        }
+      },
+      {
+        "our_score": 1,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ＦＣ町田ゼルビア",
+          "short_name": "町田",
+          "english_name": "machida"
         }
       }
     ]
@@ -2000,6 +2040,16 @@
           "short_name": "湘南",
           "english_name": "shonan"
         }
+      },
+      {
+        "our_score": 2,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "浦和レッズ",
+          "short_name": "浦和",
+          "english_name": "urawa"
+        }
       }
     ]
   },
@@ -2338,6 +2388,16 @@
           "long_name": "川崎フロンターレ",
           "short_name": "川崎Ｆ",
           "english_name": "kawasakif"
+        }
+      },
+      {
+        "our_score": 1,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "柏レイソル",
+          "short_name": "柏",
+          "english_name": "kashiwa"
         }
       }
     ]
@@ -3356,6 +3416,16 @@
           "short_name": "東京Ｖ",
           "english_name": "tokyov"
         }
+      },
+      {
+        "our_score": 2,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "サンフレッチェ広島",
+          "short_name": "広島",
+          "english_name": "hiroshima"
+        }
       }
     ]
   },
@@ -4034,6 +4104,16 @@
           "short_name": "広島",
           "english_name": "hiroshima"
         }
+      },
+      {
+        "our_score": 2,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "セレッソ大阪",
+          "short_name": "Ｃ大阪",
+          "english_name": "cosaka"
+        }
       }
     ]
   },
@@ -4373,6 +4453,16 @@
           "short_name": "福岡",
           "english_name": "fukuoka"
         }
+      },
+      {
+        "our_score": 0,
+        "their_score": 2,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "北海道コンサドーレ札幌",
+          "short_name": "札幌",
+          "english_name": "sapporo"
+        }
       }
     ]
   },
@@ -4701,6 +4791,16 @@
           "long_name": "ヴィッセル神戸",
           "short_name": "神戸",
           "english_name": "kobe"
+        }
+      },
+      {
+        "our_score": 2,
+        "their_score": 0,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "サガン鳥栖",
+          "short_name": "鳥栖",
+          "english_name": "tosu"
         }
       }
     ]
@@ -5390,6 +5490,16 @@
           "short_name": "浦和",
           "english_name": "urawa"
         }
+      },
+      {
+        "our_score": 1,
+        "their_score": 2,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ジュビロ磐田",
+          "short_name": "磐田",
+          "english_name": "iwata"
+        }
       }
     ]
   },
@@ -6078,6 +6188,16 @@
           "short_name": "磐田",
           "english_name": "iwata"
         }
+      },
+      {
+        "our_score": 1,
+        "their_score": 2,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "湘南ベルマーレ",
+          "short_name": "湘南",
+          "english_name": "shonan"
+        }
       }
     ]
   },
@@ -6417,6 +6537,16 @@
           "short_name": "名古屋",
           "english_name": "nagoya"
         }
+      },
+      {
+        "our_score": 0,
+        "their_score": 0,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "鹿島アントラーズ",
+          "short_name": "鹿島",
+          "english_name": "kashima"
+        }
       }
     ]
   },
@@ -6755,6 +6885,16 @@
           "long_name": "ＦＣ東京",
           "short_name": "FC東京",
           "english_name": "ftokyo"
+        }
+      },
+      {
+        "our_score": 0,
+        "their_score": 2,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "京都サンガF.C.",
+          "short_name": "京都",
+          "english_name": "kyoto"
         }
       }
     ]
