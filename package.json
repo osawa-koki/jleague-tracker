@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.2.3",
-    "@playwright/test": "^1.43.1",
+    "@playwright/test": "^1.48.1",
     "@types/bootstrap": "^5.2.10",
     "@types/react": "^18.3.12",
     "@types/react-bootstrap": "^0.32.36",
