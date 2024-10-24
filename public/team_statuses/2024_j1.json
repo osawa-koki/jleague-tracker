@@ -936,6 +936,16 @@
       },
       {
         "our_score": 1,
+        "their_score": 0,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "柏レイソル",
+          "short_name": "柏",
+          "english_name": "kashiwa"
+        }
+      },
+      {
+        "our_score": 1,
         "their_score": 1,
         "is_home": false,
         "opponent_team_name": {
@@ -1261,6 +1271,16 @@
           "long_name": "川崎フロンターレ",
           "short_name": "川崎Ｆ",
           "english_name": "kawasakif"
+        }
+      },
+      {
+        "our_score": 0,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "浦和レッズ",
+          "short_name": "浦和",
+          "english_name": "urawa"
         }
       },
       {
@@ -2049,6 +2069,16 @@
           "long_name": "浦和レッズ",
           "short_name": "浦和",
           "english_name": "urawa"
+        }
+      },
+      {
+        "our_score": 2,
+        "their_score": 0,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "アルビレックス新潟",
+          "short_name": "新潟",
+          "english_name": "niigata"
         }
       }
     ]
@@ -3775,6 +3805,16 @@
           "short_name": "横浜FM",
           "english_name": "yokohamafm"
         }
+      },
+      {
+        "our_score": 0,
+        "their_score": 2,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "東京ヴェルディ",
+          "short_name": "東京Ｖ",
+          "english_name": "tokyov"
+        }
       }
     ]
   },
@@ -4463,6 +4503,16 @@
           "short_name": "札幌",
           "english_name": "sapporo"
         }
+      },
+      {
+        "our_score": 2,
+        "their_score": 3,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ガンバ大阪",
+          "short_name": "Ｇ大阪",
+          "english_name": "gosaka"
+        }
       }
     ]
   },
@@ -5150,6 +5200,16 @@
           "long_name": "川崎フロンターレ",
           "short_name": "川崎Ｆ",
           "english_name": "kawasakif"
+        }
+      },
+      {
+        "our_score": 3,
+        "their_score": 2,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "名古屋グランパス",
+          "short_name": "名古屋",
+          "english_name": "nagoya"
         }
       }
     ]
