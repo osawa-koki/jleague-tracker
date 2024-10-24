@@ -76,11 +76,12 @@ jobs:
             exit 1
           fi
           MERGEABLE=$(gh pr view ${{ steps.create_pr.outputs.pr_url }} --json mergeable | jq -r '.mergeable')
-          if [ "$MERGEABLE" = "true" ]; then
+          if [ "$MERGEABLE" = "MERGEABLE" ]; then
             echo "PR is mergeable!"
             exit 0
           else
             echo "PR is not mergeable..."
+            echo "status: $MERGEABLE"
             echo "retry after $INTERVAL seconds..."
           fi
           sleep $INTERVAL
