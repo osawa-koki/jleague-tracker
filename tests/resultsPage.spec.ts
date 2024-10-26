@@ -75,6 +75,52 @@ test.describe('Results page', () => {
     expect(page.url()).toContain('team=kumamoto')
   })
 
+  test('can sort by rank', async ({ page }) => {
+    const leagueTable = page.locator('#league-table')
+    const rankTh = leagueTable.locator('thead th:nth-child(1)')
+    {
+      await rankTh.click()
+      const trs = leagueTable.locator('tbody tr')
+      const rankCells = await trs.evaluateAll((trs) => trs.map((tr) => tr.querySelector('td:nth-child(1)')?.textContent))
+      const isSorted = rankCells.every((cell, index) =>
+        index === 0 || Number(cell) <= Number(rankCells[index - 1])
+      )
+      expect(isSorted).toBe(true)
+    }
+    {
+      await rankTh.click()
+      const trs = leagueTable.locator('tbody tr')
+      const rankCells = await trs.evaluateAll((trs) => trs.map((tr) => tr.querySelector('td:nth-child(1)')?.textContent))
+      const isSorted = rankCells.every((cell, index) =>
+        index === 0 || Number(cell) >= Number(rankCells[index - 1])
+      )
+      expect(isSorted).toBe(true)
+    }
+  })
+
+  test('can sort by goalFor', async ({ page }) => {
+    const leagueTable = page.locator('#league-table')
+    const goalForTh = leagueTable.locator('thead th:nth-child(7)')
+    {
+      await goalForTh.click()
+      const goalForTrs = leagueTable.locator('tbody tr')
+      const goalForCells = await goalForTrs.evaluateAll((trs) => trs.map((tr) => tr.querySelector('td:nth-child(7)')?.textContent))
+      const isSorted = goalForCells.every((cell, index) =>
+        index === 0 || Number(cell) <= Number(goalForCells[index - 1])
+      )
+      expect(isSorted).toBe(true)
+    }
+    {
+      await goalForTh.click()
+      const goalForTrs = leagueTable.locator('tbody tr')
+      const goalForCells = await goalForTrs.evaluateAll((trs) => trs.map((tr) => tr.querySelector('td:nth-child(7)')?.textContent))
+      const isSorted = goalForCells.every((cell, index) =>
+        index === 0 || Number(cell) >= Number(goalForCells[index - 1])
+      )
+      expect(isSorted).toBe(true)
+    }
+  })
+
   test('shows roasso won j3 with 54 points in 2021', async ({ page }) => {
     await page.selectOption('select[name=year]', '2021')
     await page.waitForFunction(() => {
