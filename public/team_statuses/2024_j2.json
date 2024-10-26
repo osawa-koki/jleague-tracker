@@ -1432,6 +1432,16 @@
           "short_name": "岡山",
           "english_name": "okayama"
         }
+      },
+      {
+        "our_score": 1,
+        "their_score": 2,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "水戸ホーリーホック",
+          "short_name": "水戸",
+          "english_name": "mito"
+        }
       }
     ]
   },
@@ -1790,6 +1800,16 @@
           "long_name": "大分トリニータ",
           "short_name": "大分",
           "english_name": "oita"
+        }
+      },
+      {
+        "our_score": 2,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "いわきFC",
+          "short_name": "いわき",
+          "english_name": "iwaki"
         }
       }
     ]
@@ -2867,6 +2887,16 @@
           "long_name": "ヴァンフォーレ甲府",
           "short_name": "甲府",
           "english_name": "kofu"
+        }
+      },
+      {
+        "our_score": 3,
+        "their_score": 2,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "藤枝ＭＹＦＣ",
+          "short_name": "藤枝",
+          "english_name": "fujieda"
         }
       }
     ]
@@ -4303,6 +4333,16 @@
           "long_name": "徳島ヴォルティス",
           "short_name": "徳島",
           "english_name": "tokushima"
+        }
+      },
+      {
+        "our_score": 2,
+        "their_score": 3,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ジェフユナイテッド千葉",
+          "short_name": "千葉",
+          "english_name": "chiba"
         }
       }
     ]
