@@ -48,11 +48,14 @@ jobs:
       if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
       run: |
         git checkout -b ${{ steps.set_branch_name.outputs.branch_name }}
-    - name: Commit changes
+    - name: Git config
       if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
+    - name: Commit changes
+      if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
+      run: |
         git add .
         git commit -m "Update data"
         git push -u origin ${{ steps.set_branch_name.outputs.branch_name }}
