@@ -32,7 +32,7 @@ jobs:
         if [ "$LATEST_MAIN_COMMIT" != "$LATEST_SECURITY_COMMIT" ]; then
           echo "Merging latest main branch into security/dependabot..."
           git fetch origin main
-          git checkout security/dependabot
+          git checkout security/dependabot || git checkout -b security/dependabot
           git merge origin/main
           if [ $? -eq 0 ]; then
             echo "Successfully merged main into security/dependabot"
