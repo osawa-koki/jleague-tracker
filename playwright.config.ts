@@ -72,7 +72,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'yarn server',
+    command: isCi ? 'yarn server' : 'yarn dev',
     url: 'http://127.0.0.1:8000',
     reuseExistingServer: !isCi
   }
