@@ -1,16 +1,40 @@
-'use client'
-
 import React, { useEffect, useMemo, useState } from 'react'
-
+import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 
 import { Form, OverlayTrigger, Table, Tooltip } from 'react-bootstrap'
 
+import {
+  TiArrowSortedDown,
+  TiArrowSortedUp
+} from 'react-icons/ti'
+
+import {
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  useReactTable,
+  type SortingState
+} from '@tanstack/react-table'
+
 import type TeamStatus from '@/app/@types/TeamStatus'
 import type TeamDetailStatusBySection from '@/app/@types/TeamDetailStatusBySection'
+import type TeamDetailStatusBySectionForTable from '@/app/@types/TeamDetailStatusBySectionForTable'
+
 import { sortByStatus } from '@/app/_util/sortByStatus'
 import sum from '@/app/_util/sum'
-import Image from 'next/image'
+
+const getSortIcon = (sortDirection: false | 'asc' | 'desc'): JSX.Element => {
+  switch (sortDirection) {
+    case 'asc':
+      return <TiArrowSortedUp />
+    case 'desc':
+      return <TiArrowSortedDown />
+    default:
+      return <></>
+  }
+}
 
 interface Props {
   teamStatuses: TeamStatus[]
@@ -20,6 +44,8 @@ export default function LeagueTable (props: Props): React.JSX.Element {
   const { teamStatuses } = props
 
   const searchParams = useSearchParams()
+
+  const [sorting, setSorting] = useState<SortingState>([])
 
   const maxSection = useMemo(() => {
     return Math.max(...teamStatuses.map(status => status.gameResults.length))
@@ -53,8 +79,14 @@ export default function LeagueTable (props: Props): React.JSX.Element {
     })
   }, [section, teamStatuses])
 
-  const sortedTeamDetailStatuses = useMemo(() => {
-    return teamDetailStatuses.sort(sortByStatus)
+  const sortedTeamDetailStatusesForTable: TeamDetailStatusBySectionForTable[] = useMemo(() => {
+    return teamDetailStatuses.sort(sortByStatus).map((status, index) => {
+      return {
+        ...status,
+        rank: index + 1,
+        matches: sum(status.win, status.draw, status.lose)
+      }
+    })
   }, [teamDetailStatuses])
 
   useEffect(() => {
@@ -71,6 +103,89 @@ export default function LeagueTable (props: Props): React.JSX.Element {
     url.searchParams.set(key, value)
     window.history.pushState({ path: url.href }, '', url.href)
   }
+
+  const columnHelper = createColumnHelper<TeamDetailStatusBySectionForTable>()
+
+  const columns = [
+    columnHelper.accessor('rank', {
+      header: '順位',
+      cell: (info) => info.getValue()
+    }),
+    columnHelper.accessor('teamName.longName', {
+      header: 'チーム名',
+      cell: (info) => (
+        <>
+          <OverlayTrigger
+            placement='top'
+            delay={{ show: 100, hide: 500 }}
+            overlay={(props) => {
+              return (
+                <Tooltip {...props}>
+                  {info.row.original.gameResults.map((result, index) => {
+                    switch (true) {
+                      case result.ourScore === result.theirScore:
+                        return <Image key={index} src='/images/draw.svg' alt='引分' width={16} height={16} />
+                      case result.ourScore > result.theirScore:
+                        return <Image key={index} src='/images/win.svg' alt='勝利' width={16} height={16} />
+                      case result.ourScore < result.theirScore:
+                        return <Image key={index} src='/images/loss.svg' alt='敗北' width={16} height={16} />
+                      default:
+                        throw new Error('Unexpected result')
+                    }
+                  })}
+                </Tooltip>
+              )
+            }}
+          >
+            <span>{info.row.original.teamName.longName}</span>
+          </OverlayTrigger>
+        </>
+      )
+    }),
+    columnHelper.accessor('matches', {
+      header: '試合数',
+      cell: (info) => info.getValue()
+    }),
+    columnHelper.accessor('win', {
+      header: '勝',
+      cell: (info) => info.getValue()
+    }),
+    columnHelper.accessor('draw', {
+      header: '分',
+      cell: (info) => info.getValue()
+    }),
+    columnHelper.accessor('lose', {
+      header: '敗',
+      cell: (info) => info.getValue()
+    }),
+    columnHelper.accessor('goalFor', {
+      header: '得',
+      cell: (info) => info.getValue()
+    }),
+    columnHelper.accessor('goalAgainst', {
+      header: '失',
+      cell: (info) => info.getValue()
+    }),
+    columnHelper.accessor('goalDifference', {
+      header: '差',
+      cell: (info) => info.getValue()
+    }),
+    columnHelper.accessor('points', {
+      header: '勝点',
+      cell: (info) => <span className='fw-bold'>{info.getValue()}</span>
+    })
+  ]
+
+  const table = useReactTable({
+    data: sortedTeamDetailStatusesForTable,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    state: {
+      sorting
+    },
+    onSortingChange: setSorting
+  })
 
   return (
     <div>
@@ -95,57 +210,30 @@ export default function LeagueTable (props: Props): React.JSX.Element {
       <hr />
       <Table id='league-table'>
         <thead>
-          <tr>
-            <th>順位</th>
-            <th>チーム</th>
-            <th>試合数</th>
-            <th>勝</th>
-            <th>引</th>
-            <th>負</th>
-            <th>得</th>
-            <th>失</th>
-            <th>差</th>
-            <th className='fw-bold'>点</th>
-          </tr>
+          {table.getHeaderGroups().map(headerGroup => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map(header => (
+                <th key={header.id} onClick={header.column.getToggleSortingHandler()} style={{ cursor: 'pointer' }}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
+                  {getSortIcon(header.column.getIsSorted())}
+                </th>
+              ))}
+            </tr>
+          ))}
         </thead>
         <tbody>
-          {sortedTeamDetailStatuses.map((status, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>
-                <OverlayTrigger
-                  placement='top'
-                  delay={{ show: 100, hide: 500 }}
-                  overlay={(props) => {
-                    return (
-                      <Tooltip {...props}>
-                        {status.gameResults.map((result, index) => {
-                          switch (true) {
-                            case result.ourScore === result.theirScore:
-                              return <Image key={index} src='/images/draw.svg' alt='引分' width={16} height={16} />
-                            case result.ourScore > result.theirScore:
-                              return <Image key={index} src='/images/win.svg' alt='勝利' width={16} height={16} />
-                            case result.ourScore < result.theirScore:
-                              return <Image key={index} src='/images/loss.svg' alt='敗北' width={16} height={16} />
-                            default:
-                              throw new Error('Unexpected result')
-                          }
-                        })}
-                      </Tooltip>
-                    )
-                  }}
-                >
-                  <span>{status.teamName.longName}</span>
-                </OverlayTrigger>
-              </td>
-              <td>{sum(status.win, status.draw, status.lose)}</td>
-              <td>{status.win}</td>
-              <td>{status.draw}</td>
-              <td>{status.lose}</td>
-              <td>{status.goalFor}</td>
-              <td>{status.goalAgainst}</td>
-              <td>{status.goalDifference}</td>
-              <td className='fw-bold'>{status.points}</td>
+          {table.getRowModel().rows.map(row => (
+            <tr key={row.id}>
+              {row.getVisibleCells().map(cell => (
+                <td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </td>
+              ))}
             </tr>
           ))}
         </tbody>
