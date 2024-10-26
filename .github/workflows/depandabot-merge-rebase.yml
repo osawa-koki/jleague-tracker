@@ -1,0 +1,50 @@
+name: dependabot-merge-rebase
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+jobs:
+  update:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Install packages
+      run: |
+        sudo apt update
+        sudo apt install -y jq
+    - name: Merge or rebase PRs
+      run: |
+        prs=$(gh pr list --search "author:app/dependabot base:security/dependabot is:open" --json number,mergeable --jq '.[]')
+
+        for pr in $(echo "$prs" | jq -c '.'); do
+          pr_number=$(echo "$pr" | jq -r '.number')
+          mergeable=$(echo "$pr" | jq -r '.mergeable')
+
+          if [ "$mergeable" == "CONFLICTING" ]; then
+            echo "Adding rebase comment to PR #$pr_number..."
+            gh pr comment $pr_number -R "." --body "@dependabot rebase"
+            if [ $? -eq 0 ]; then
+              echo "Successfully added rebase comment to PR #$pr_number"
+            else
+              echo "Failed to add rebase comment to PR #$pr_number"
+            fi
+          elif [ "$mergeable" == "MERGEABLE" ]; then
+            echo "Merging PR #$pr_number..."
+            gh pr merge $pr_number -R "." --merge
+            if [ $? -eq 0 ]; then
+              echo "Successfully merged PR #$pr_number"
+            else
+              echo "Failed to merge PR #$pr_number"
+            fi
+          else
+            echo "PR #$pr_number is not in a mergeable state."
+          fi
+        done
