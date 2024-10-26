@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useEffect, useMemo, useState } from 'react'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
@@ -7,10 +5,17 @@ import { useSearchParams } from 'next/navigation'
 import { Form, OverlayTrigger, Table, Tooltip } from 'react-bootstrap'
 
 import {
+  TiArrowSortedDown,
+  TiArrowSortedUp
+} from 'react-icons/ti'
+
+import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
-  useReactTable
+  getSortedRowModel,
+  useReactTable,
+  type SortingState
 } from '@tanstack/react-table'
 
 import type TeamStatus from '@/app/@types/TeamStatus'
@@ -20,6 +25,17 @@ import type TeamDetailStatusBySectionForTable from '@/app/@types/TeamDetailStatu
 import { sortByStatus } from '@/app/_util/sortByStatus'
 import sum from '@/app/_util/sum'
 
+const getSortIcon = (sortDirection: false | 'asc' | 'desc'): JSX.Element => {
+  switch (sortDirection) {
+    case 'asc':
+      return <TiArrowSortedUp />
+    case 'desc':
+      return <TiArrowSortedDown />
+    default:
+      return <></>
+  }
+}
+
 interface Props {
   teamStatuses: TeamStatus[]
 }
@@ -28,6 +44,8 @@ export default function LeagueTable (props: Props): React.JSX.Element {
   const { teamStatuses } = props
 
   const searchParams = useSearchParams()
+
+  const [sorting, setSorting] = useState<SortingState>([])
 
   const maxSection = useMemo(() => {
     return Math.max(...teamStatuses.map(status => status.gameResults.length))
@@ -161,7 +179,12 @@ export default function LeagueTable (props: Props): React.JSX.Element {
   const table = useReactTable({
     data: sortedTeamDetailStatusesForTable,
     columns,
-    getCoreRowModel: getCoreRowModel()
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    state: {
+      sorting
+    },
+    onSortingChange: setSorting
   })
 
   return (
@@ -190,20 +213,21 @@ export default function LeagueTable (props: Props): React.JSX.Element {
           {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map(header => (
-                <th key={header.id}>
+                <th key={header.id} onClick={header.column.getToggleSortingHandler()} style={{ cursor: 'pointer' }}>
                   {header.isPlaceholder
                     ? null
                     : flexRender(
                       header.column.columnDef.header,
                       header.getContext()
                     )}
+                  {getSortIcon(header.column.getIsSorted())}
                 </th>
               ))}
             </tr>
           ))}
         </thead>
         <tbody>
-        {table.getRowModel().rows.map(row => (
+          {table.getRowModel().rows.map(row => (
             <tr key={row.id}>
               {row.getVisibleCells().map(cell => (
                 <td key={cell.id}>
@@ -211,7 +235,7 @@ export default function LeagueTable (props: Props): React.JSX.Element {
                 </td>
               ))}
             </tr>
-        ))}
+          ))}
         </tbody>
       </Table>
     </div>
