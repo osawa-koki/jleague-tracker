@@ -28,17 +28,13 @@ jobs:
       run: |
         LATEST_MAIN_COMMIT=$(gh api repos/${{ github.repository }}/branches/main --jq '.commit.sha')
         LATEST_SECURITY_COMMIT=$(gh api repos/${{ github.repository }}/branches/security/dependabot --jq '.commit.sha')
-        echo "Latest commit on main: $LATEST_MAIN_COMMIT"
-        echo "Latest commit on security/dependabot: $LATEST_SECURITY_COMMIT"
 
         if [ "$LATEST_MAIN_COMMIT" != "$LATEST_SECURITY_COMMIT" ]; then
           echo "Merging latest main branch into security/dependabot..."
           git fetch
           git checkout security/dependabot || git checkout -b security/dependabot
           git pull origin security/dependabot
-          echo "before merge"
           git merge origin/main
-          echo "after merge"
           if [ $? -eq 0 ]; then
             echo "Successfully merged main into security/dependabot"
             git push origin security/dependabot
