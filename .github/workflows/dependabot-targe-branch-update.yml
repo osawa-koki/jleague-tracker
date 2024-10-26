@@ -17,6 +17,25 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y jq
+    - name: Update security/dependabot branch
+      run: |
+        LATEST_MAIN_COMMIT=$(gh api repos/${{ github.repository }}/branches/main --jq '.commit.sha')
+        LATEST_SECURITY_COMMIT=$(gh api repos/${{ github.repository }}/branches/security/dependabot --jq '.commit.sha')
+
+        if [ "$LATEST_MAIN_COMMIT" != "$LATEST_SECURITY_COMMIT" ]; then
+          echo "Merging latest main branch into security/dependabot..."
+          git fetch origin main
+          git checkout security/dependabot
+          git merge origin/main
+          if [ $? -eq 0 ]; then
+            echo "Successfully merged main into security/dependabot"
+            git push origin security/dependabot
+          else
+            echo "Failed to merge main into security/dependabot"
+          fi
+        else
+          echo "security/dependabot is already up to date with main"
+        fi
     - name: Update target branch
       run: |
         prs=$(gh pr list --search "author:app/dependabot" --json number,baseRefName --jq '.[] | select(.baseRefName != "security/dependabot") | .number')
