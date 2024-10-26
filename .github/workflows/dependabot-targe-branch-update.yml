@@ -45,6 +45,12 @@ jobs:
           git checkout security/dependabot || git checkout -b security/dependabot
           git commit --allow-empty -m "Empty commit for dependabot target branch update"
           git push origin security/dependabot
+          if [ $? -eq 0 ]; then
+            echo "Successfully created empty commit for dependabot target branch update"
+          else
+            echo "Failed to create empty commit for dependabot target branch update"
+            exit 1
+          fi
 
           echo "Creating pull request from security/dependabot to main..."
           gh pr create --base main --head security/dependabot --title "Merge security/dependabot into main" --body "Automatically created PR to merge security/dependabot into main with the latest changes."
