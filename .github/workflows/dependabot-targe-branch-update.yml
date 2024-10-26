@@ -1,0 +1,32 @@
+name: dependabot-targe-branch-update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+jobs:
+  update:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install packages
+      run: |
+        sudo apt update
+        sudo apt install -y jq
+    - name: Update target branch
+      run: |
+        prs=$(gh pr list --search "author:app/dependabot" --json number,baseRefName --jq '.[] | select(.baseRefName != "security/dependabot") | .number')
+
+        for pr_number in $prs; do
+          echo "Updating base branch for PR #$pr_number..."
+          gh pr edit $pr_number --base "security/dependabot"
+          if [ $? -eq 0 ]; then
+            echo "Successfully updated target-branch PR #$pr_number"
+          else
+            echo "Failed to update target-branch PR #$pr_number"
+          fi
+        done
