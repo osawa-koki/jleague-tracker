@@ -30,7 +30,7 @@ jobs:
 
           if [ "$mergeable" == "CONFLICTING" ]; then
             echo "Adding rebase comment to PR #$pr_number..."
-            gh pr comment $pr_number -R "." --body "@dependabot rebase"
+            gh pr comment $pr_number --body "@dependabot rebase"
             if [ $? -eq 0 ]; then
               echo "Successfully added rebase comment to PR #$pr_number"
             else
@@ -38,7 +38,7 @@ jobs:
             fi
           elif [ "$mergeable" == "MERGEABLE" ]; then
             echo "Merging PR #$pr_number..."
-            gh pr merge $pr_number -R "." --merge
+            gh pr merge $pr_number --merge
             if [ $? -eq 0 ]; then
               echo "Successfully merged PR #$pr_number"
             else
