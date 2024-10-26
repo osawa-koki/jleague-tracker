@@ -36,6 +36,27 @@ jobs:
         else
           echo "security/dependabot is already up to date with main"
         fi
+    - name: Create pr
+      run: |
+        pr=$(gh pr list --base "main" --head "security/dependabot" --state "open" --json number --jq '.[0].number')
+        if [ -z "$pr" ]; then
+          echo "Creating empty commit for dependabot target branch update..."
+          git fetch
+          git checkout security/dependabot || git checkout -b security/dependabot
+          git commit --allow-empty -m "Empty commit for dependabot target branch update"
+          git push origin security/dependabot
+
+          echo "Creating pull request from security/dependabot to main..."
+          gh pr create --base main --head security/dependabot --title "Merge security/dependabot into main" --body "Automatically created PR to merge security/dependabot into main with the latest changes."
+          if [ $? -eq 0 ]; then
+            echo "Successfully created pull request from security/dependabot to main"
+          else
+            echo "Failed to create pull request from security/dependabot to main"
+            exit 1
+          fi
+        else
+          echo "Pull request #$existing_pr already exists from security/dependabot to main"
+        fi
     - name: Update target branch
       run: |
         prs=$(gh pr list --search "author:app/dependabot" --json number,baseRefName --jq '.[] | select(.baseRefName != "security/dependabot") | .number')
