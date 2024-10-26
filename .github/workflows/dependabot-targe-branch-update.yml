@@ -21,7 +21,6 @@ jobs:
         sudo apt update
         sudo apt install -y jq
     - name: Git config
-      if: ${{ steps.has_changes.outputs.has_changes == 'true' }}
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
