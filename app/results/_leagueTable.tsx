@@ -8,6 +8,8 @@ import { Form, OverlayTrigger, Table, Tooltip } from 'react-bootstrap'
 
 import type TeamStatus from '@/app/@types/TeamStatus'
 import type TeamDetailStatusBySection from '@/app/@types/TeamDetailStatusBySection'
+import type TeamDetailStatusBySectionWithRank from '@/app/@types/TeamDetailStatusBySectionWithRank'
+
 import { sortByStatus } from '@/app/_util/sortByStatus'
 import sum from '@/app/_util/sum'
 import Image from 'next/image'
@@ -53,8 +55,13 @@ export default function LeagueTable (props: Props): React.JSX.Element {
     })
   }, [section, teamStatuses])
 
-  const sortedTeamDetailStatuses = useMemo(() => {
-    return teamDetailStatuses.sort(sortByStatus)
+  const sortedTeamDetailStatusesWithRank: TeamDetailStatusBySectionWithRank[] = useMemo(() => {
+    return teamDetailStatuses.sort(sortByStatus).map((status, index) => {
+      return {
+        ...status,
+        rank: index + 1
+      }
+    })
   }, [teamDetailStatuses])
 
   useEffect(() => {
@@ -109,9 +116,9 @@ export default function LeagueTable (props: Props): React.JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {sortedTeamDetailStatuses.map((status, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
+          {sortedTeamDetailStatusesWithRank.map((status) => (
+            <tr key={status.teamName.englishName}>
+              <td>{status.rank}</td>
               <td>
                 <OverlayTrigger
                   placement='top'
