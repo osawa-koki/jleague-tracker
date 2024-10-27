@@ -22,13 +22,13 @@ jobs:
         sudo apt install -y jq
     - name: Merge or rebase PRs
       run: |
-        prs=$(gh pr list --search "author:app/dependabot base:security/dependabot is:open" --json number,mergeable --jq '.[]')
+        prs=$(gh pr list --search "author:app/dependabot base:security/dependabot is:open" --json number --jq '.[]')
 
         for pr in $(echo "$prs" | jq -c '.'); do
           pr_number=$(echo "$pr" | jq -r '.number')
-          mergeable=$(echo "$pr" | jq -r '.mergeable')
+          mergeable=$(gh pr view $pr_number --json mergeable --jq '.mergeable')
 
-          if [ "$mergeable" == "CONFLICTING" ]; then
+          if [[ "$mergeable" == "CONFLICTING" ]]; then
             echo "Adding rebase comment to PR #$pr_number..."
             gh pr comment $pr_number --body "@dependabot rebase"
             if [ $? -eq 0 ]; then
@@ -36,7 +36,7 @@ jobs:
             else
               echo "Failed to add rebase comment to PR #$pr_number"
             fi
-          elif [ "$mergeable" == "MERGEABLE" ]; then
+          elif [[ "$mergeable" == "MERGEABLE" ]]; then
             echo "Merging PR #$pr_number..."
             gh pr merge $pr_number --merge
             if [ $? -eq 0 ]; then
