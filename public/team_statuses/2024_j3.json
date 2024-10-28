@@ -684,6 +684,16 @@
           "short_name": "岐阜",
           "english_name": "gifu"
         }
+      },
+      {
+        "our_score": 1,
+        "their_score": 2,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "大宮アルディージャ",
+          "short_name": "大宮",
+          "english_name": "omiya"
+        }
       }
     ]
   },
@@ -1023,6 +1033,16 @@
           "short_name": "富山",
           "english_name": "toyama"
         }
+      },
+      {
+        "our_score": 2,
+        "their_score": 3,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ＳＣ相模原",
+          "short_name": "相模原",
+          "english_name": "sagamihara"
+        }
       }
     ]
   },
@@ -1361,6 +1381,16 @@
           "long_name": "ＦＣ今治",
           "short_name": "今治",
           "english_name": "imabari"
+        }
+      },
+      {
+        "our_score": 2,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "いわてグルージャ盛岡",
+          "short_name": "岩手",
+          "english_name": "iwate"
         }
       }
     ]
@@ -2050,6 +2080,16 @@
           "short_name": "YS横浜",
           "english_name": "yscc"
         }
+      },
+      {
+        "our_score": 3,
+        "their_score": 2,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "福島ユナイテッドＦＣ",
+          "short_name": "福島",
+          "english_name": "fukushima"
+        }
       }
     ]
   },
@@ -2738,6 +2778,16 @@
           "short_name": "琉球",
           "english_name": "ryukyu"
         }
+      },
+      {
+        "our_score": 1,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "アスルクラロ沼津",
+          "short_name": "沼津",
+          "english_name": "numazu"
+        }
       }
     ]
   },
@@ -3076,6 +3126,16 @@
           "long_name": "福島ユナイテッドＦＣ",
           "short_name": "福島",
           "english_name": "fukushima"
+        }
+      },
+      {
+        "our_score": 2,
+        "their_score": 2,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ガイナーレ鳥取",
+          "short_name": "鳥取",
+          "english_name": "tottori"
         }
       }
     ]
@@ -3765,6 +3825,16 @@
           "short_name": "金沢",
           "english_name": "kanazawa"
         }
+      },
+      {
+        "our_score": 1,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ＡＣ長野パルセイロ",
+          "short_name": "長野",
+          "english_name": "nagano"
+        }
       }
     ]
   },
@@ -4453,6 +4523,16 @@
           "short_name": "北九州",
           "english_name": "kitakyushu"
         }
+      },
+      {
+        "our_score": 0,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "テゲバジャーロ宮崎",
+          "short_name": "宮崎",
+          "english_name": "miyazaki"
+        }
       }
     ]
   },
@@ -5140,6 +5220,16 @@
           "long_name": "松本山雅ＦＣ",
           "short_name": "松本",
           "english_name": "matsumoto"
+        }
+      },
+      {
+        "our_score": 2,
+        "their_score": 2,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "カターレ富山",
+          "short_name": "富山",
+          "english_name": "toyama"
         }
       }
     ]
@@ -6526,6 +6616,16 @@
           "long_name": "カマタマーレ讃岐",
           "short_name": "讃岐",
           "english_name": "sanuki"
+        }
+      },
+      {
+        "our_score": 1,
+        "their_score": 0,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ＦＣ大阪",
+          "short_name": "FC大阪",
+          "english_name": "osaka"
         }
       }
     ]
