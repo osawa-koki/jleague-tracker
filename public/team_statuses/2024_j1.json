@@ -1023,6 +1023,16 @@
           "short_name": "東京Ｖ",
           "english_name": "tokyov"
         }
+      },
+      {
+        "our_score": 0,
+        "their_score": 0,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "横浜Ｆ・マリノス",
+          "short_name": "横浜FM",
+          "english_name": "yokohamafm"
+        }
       }
     ]
   },
@@ -3106,6 +3116,16 @@
           "long_name": "アルビレックス新潟",
           "short_name": "新潟",
           "english_name": "niigata"
+        }
+      },
+      {
+        "our_score": 0,
+        "their_score": 0,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "浦和レッズ",
+          "short_name": "浦和",
+          "english_name": "urawa"
         }
       }
     ]
