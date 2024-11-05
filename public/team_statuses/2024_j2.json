@@ -365,6 +365,16 @@
           "short_name": "愛媛",
           "english_name": "ehime"
         }
+      },
+      {
+        "our_score": 1,
+        "their_score": 3,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ロアッソ熊本",
+          "short_name": "熊本",
+          "english_name": "kumamoto"
+        }
       }
     ]
   },
@@ -6797,6 +6807,16 @@
           "long_name": "モンテディオ山形",
           "short_name": "山形",
           "english_name": "yamagata"
+        }
+      },
+      {
+        "our_score": 3,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ベガルタ仙台",
+          "short_name": "仙台",
+          "english_name": "sendai"
         }
       }
     ]
