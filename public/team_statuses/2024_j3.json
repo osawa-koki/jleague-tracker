@@ -345,6 +345,16 @@
           "short_name": "琉球",
           "english_name": "ryukyu"
         }
+      },
+      {
+        "our_score": 3,
+        "their_score": 3,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "カマタマーレ讃岐",
+          "short_name": "讃岐",
+          "english_name": "sanuki"
+        }
       }
     ]
   },
@@ -693,6 +703,16 @@
           "long_name": "大宮アルディージャ",
           "short_name": "大宮",
           "english_name": "omiya"
+        }
+      },
+      {
+        "our_score": 1,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ツエーゲン金沢",
+          "short_name": "金沢",
+          "english_name": "kanazawa"
         }
       }
     ]
@@ -3556,6 +3576,16 @@
           "short_name": "北九州",
           "english_name": "kitakyushu"
         }
+      },
+      {
+        "our_score": 1,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "いわてグルージャ盛岡",
+          "short_name": "岩手",
+          "english_name": "iwate"
+        }
       }
     ]
   },
@@ -5700,6 +5730,16 @@
           "short_name": "奈良",
           "english_name": "nara"
         }
+      },
+      {
+        "our_score": 3,
+        "their_score": 3,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ヴァンラーレ八戸",
+          "short_name": "八戸",
+          "english_name": "vanraure"
+        }
       }
     ]
   },
@@ -6048,6 +6088,16 @@
           "long_name": "ＦＣ岐阜",
           "short_name": "岐阜",
           "english_name": "gifu"
+        }
+      },
+      {
+        "our_score": 2,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ＦＣ琉球",
+          "short_name": "琉球",
+          "english_name": "ryukyu"
         }
       }
     ]
@@ -7115,6 +7165,16 @@
           "long_name": "ヴァンラーレ八戸",
           "short_name": "八戸",
           "english_name": "vanraure"
+        }
+      },
+      {
+        "our_score": 1,
+        "their_score": 2,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ＦＣ今治",
+          "short_name": "今治",
+          "english_name": "imabari"
         }
       }
     ]
