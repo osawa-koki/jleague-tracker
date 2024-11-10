@@ -355,6 +355,16 @@
           "short_name": "讃岐",
           "english_name": "sanuki"
         }
+      },
+      {
+        "our_score": 1,
+        "their_score": 0,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ＡＣ長野パルセイロ",
+          "short_name": "長野",
+          "english_name": "nagano"
+        }
       }
     ]
   },
@@ -713,6 +723,16 @@
           "long_name": "ツエーゲン金沢",
           "short_name": "金沢",
           "english_name": "kanazawa"
+        }
+      },
+      {
+        "our_score": 1,
+        "their_score": 6,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "松本山雅ＦＣ",
+          "short_name": "松本",
+          "english_name": "matsumoto"
         }
       }
     ]
@@ -1791,6 +1811,16 @@
           "short_name": "長野",
           "english_name": "nagano"
         }
+      },
+      {
+        "our_score": 0,
+        "their_score": 5,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ＦＣ大阪",
+          "short_name": "FC大阪",
+          "english_name": "osaka"
+        }
       }
     ]
   },
@@ -2509,6 +2539,16 @@
           "short_name": "宮崎",
           "english_name": "miyazaki"
         }
+      },
+      {
+        "our_score": 6,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "いわてグルージャ盛岡",
+          "short_name": "岩手",
+          "english_name": "iwate"
+        }
       }
     ]
   },
@@ -2867,6 +2907,16 @@
           "long_name": "Ｙ．Ｓ．Ｃ．Ｃ．横浜",
           "short_name": "YS横浜",
           "english_name": "yscc"
+        }
+      },
+      {
+        "our_score": 0,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ヴァンラーレ八戸",
+          "short_name": "八戸",
+          "english_name": "vanraure"
         }
       }
     ]
@@ -4662,6 +4712,16 @@
           "long_name": "ＦＣ岐阜",
           "short_name": "岐阜",
           "english_name": "gifu"
+        }
+      },
+      {
+        "our_score": 5,
+        "their_score": 0,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "Ｙ．Ｓ．Ｃ．Ｃ．横浜",
+          "short_name": "YS横浜",
+          "english_name": "yscc"
         }
       }
     ]
