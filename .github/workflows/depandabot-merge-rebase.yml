@@ -3,7 +3,7 @@ name: dependabot-merge-rebase
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 * * * *'
 
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
