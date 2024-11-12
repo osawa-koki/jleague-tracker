@@ -3,7 +3,7 @@ name: dependabot-targe-branch-update
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 * * * *'
 
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
