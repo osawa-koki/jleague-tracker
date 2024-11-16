@@ -2210,6 +2210,16 @@
           "short_name": "奈良",
           "english_name": "nara"
         }
+      },
+      {
+        "our_score": 0,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ＦＣ大阪",
+          "short_name": "FC大阪",
+          "english_name": "osaka"
+        }
       }
     ]
   },
@@ -4792,6 +4802,16 @@
           "long_name": "Ｙ．Ｓ．Ｃ．Ｃ．横浜",
           "short_name": "YS横浜",
           "english_name": "yscc"
+        }
+      },
+      {
+        "our_score": 1,
+        "their_score": 0,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "ＳＣ相模原",
+          "short_name": "相模原",
+          "english_name": "sagamihara"
         }
       }
     ]
