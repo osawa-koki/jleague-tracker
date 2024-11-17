@@ -3209,6 +3209,16 @@
         }
       },
       {
+        "our_score": 4,
+        "their_score": 3,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "ジュビロ磐田",
+          "short_name": "磐田",
+          "english_name": "iwata"
+        }
+      },
+      {
         "our_score": 1,
         "their_score": 2,
         "is_home": true,
@@ -4303,6 +4313,16 @@
           "long_name": "北海道コンサドーレ札幌",
           "short_name": "札幌",
           "english_name": "sapporo"
+        }
+      },
+      {
+        "our_score": 3,
+        "their_score": 4,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "横浜Ｆ・マリノス",
+          "short_name": "横浜FM",
+          "english_name": "yokohamafm"
         }
       },
       {
