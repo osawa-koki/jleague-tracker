@@ -1015,6 +1015,16 @@
         }
       },
       {
+        "our_score": 1,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "川崎フロンターレ",
+          "short_name": "川崎Ｆ",
+          "english_name": "kawasakif"
+        }
+      },
+      {
         "our_score": 2,
         "their_score": 2,
         "is_home": false,
@@ -2847,6 +2857,16 @@
           "long_name": "横浜Ｆ・マリノス",
           "short_name": "横浜FM",
           "english_name": "yokohamafm"
+        }
+      },
+      {
+        "our_score": 1,
+        "their_score": 1,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "浦和レッズ",
+          "short_name": "浦和",
+          "english_name": "urawa"
         }
       },
       {
