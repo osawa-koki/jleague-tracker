@@ -365,6 +365,16 @@
           "short_name": "湘南",
           "english_name": "shonan"
         }
+      },
+      {
+        "our_score": 1,
+        "their_score": 5,
+        "is_home": false,
+        "opponent_team_name": {
+          "long_name": "サンフレッチェ広島",
+          "short_name": "広島",
+          "english_name": "hiroshima"
+        }
       }
     ]
   },
@@ -6797,6 +6807,16 @@
           "long_name": "浦和レッズ",
           "short_name": "浦和",
           "english_name": "urawa"
+        }
+      },
+      {
+        "our_score": 5,
+        "their_score": 1,
+        "is_home": true,
+        "opponent_team_name": {
+          "long_name": "北海道コンサドーレ札幌",
+          "short_name": "札幌",
+          "english_name": "sapporo"
         }
       }
     ]
