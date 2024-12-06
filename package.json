@@ -41,7 +41,7 @@
     "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^15.0.3",
+    "@next/eslint-plugin-next": "^15.0.4",
     "@playwright/test": "^1.49.0",
     "@types/bootstrap": "^5.2.10",
     "@types/react": "^18.3.12",
